@@ -1,0 +1,11 @@
+language: generic
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t rodvind/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run rodvind/docker-react npm run test -- --coverage
+  # - docker run -e CI=true rodvind/docker-react npm run test

@@ -7,5 +7,5 @@ before_install:
   - docker build -t rodvind/docker-react -f Dockerfile.dev .
 
 script:
-  - docker run rodvind/docker-react npm run test -- --coverage
-  # - docker run -e CI=true rodvind/docker-react npm run test
+  # - docker run rodvind/docker-react npm run test -- --coverage --watchAll=false
+  - docker run -e CI=true rodvind/docker-react npm run test

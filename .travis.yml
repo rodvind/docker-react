@@ -9,3 +9,16 @@ before_install:
 script:
   # - docker run rodvind/docker-react npm run test -- --coverage --watchAll=false
   - docker run -e CI=true rodvind/docker-react npm run test
+
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-1"
+  app: "docker-react"
+  env: "Dockerreact-env"
+  bucket_name: "elasticbeanstalk-us-east-1-387934445668"
+  bucket_path: "docker-react"
+  on:
+    branch: master
+  
+  access_key_id: $AWs_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
